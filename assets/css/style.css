@@ -1,0 +1,51 @@
+html {
+	height: 100%;
+}
+body {
+	background-image: url("../../assets/images/dirt.jpg");
+	max-height: 100%
+}
+h1, p, ul {
+	padding:0;
+	text-align: center;
+	font-family: 'VT323';
+}
+/*Title 3D effect*/
+h1{
+    background: url(../../assets/images/stone.jpg) 100%;
+    background-size: contain;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    padding-bottom: 30px;
+    /*max-width: 750px;*/
+    font-size: 175px;
+    color: #afafaf;
+    margin: 20px auto;
+    border: 5px groove #bbb;
+}
+.panel{
+	margin-top: 20px;
+	border-radius: 0px;
+	border: 5px ridge #bbb;
+}
+p, ul {
+	font-size: 25px;
+}
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.title-screen {
+	width: 100%;
+}
+li {
+	list-style: none;
+	display: inline;
+}
