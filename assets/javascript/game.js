@@ -1,3 +1,4 @@
+window.onload = function () {
 // Create answers array
 var answers = ["stone", "wood", "creeper", "enderman", "diamond", "pickaxe", "torch", "zombie", "dirt", "sword"];
 
@@ -40,3 +41,4 @@ while (remainingLetters > 0) {
 }
 alert(answerArray.join(" "));
 alert("Good Job! The answer was " + wordSel);
+}
