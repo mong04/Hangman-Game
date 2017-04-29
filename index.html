@@ -14,7 +14,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script type="text/javascript" src="assets/javascript/game.js" ></script>
+	<script type="text/javascript" src="assets/javascript/game2.js" ></script>
 	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -31,20 +31,20 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-6">
-						<img src="assets/images/minecraft.jpg" alt="" class="title-screen">
+						<img src="assets/images/minecraft.jpg" alt="" id="title-screen">
 						</div>
 						<div class="col-sm-6 row-centered">
-							<p>Press Any Key to Get Started!</p>
-							<p class="wins">Wins</p>
+							<p>Press Any Letter to Get Started!</p>
+							<p id="alert"></p>
+							<p id="wins">Wins</p>
 							<p>Current Word</p>
 							<p id="word"></p>
 						<div class="row">
 							<div class="col-sm-12">
 								<p>Number of Guesses Remaining</p>
-								<p class="guesses"></p>
+								<p id="guesses"></p>
 								<p>Letters Already Guessed</p>
-								<ul class="guessed">
-								</ul>
+								<p id="guessed"></p>
 							</div>
 						</div>
 						</div>

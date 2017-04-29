@@ -42,7 +42,7 @@ p, ul {
     /* inline-block space fix */
     margin-right:-4px;
 }
-.title-screen {
+#title-screen {
 	width: 100%;
 }
 li {

@@ -1,44 +1,85 @@
-window.onload = function () {
-// Create answers array
 var answers = ["stone", "wood", "creeper", "enderman", "diamond", "pickaxe", "torch", "zombie", "dirt", "sword"];
 
-// Grab random word from array for the game
-var wordSel = answers[Math.floor(Math.random() * answers.length)];
+var pickAWord = function() {
+	var wordSel = answers[Math.floor(Math.random() * answers.length)];
+	return wordSel;
+};
 
-// log selected word to the console
+wordSel = pickAWord();
 console.log(wordSel);
 
-// Create blank array for "_" to display for length of word
-var answerArray = [];
-	
-// For loop to determine how many "_" to fill array with
-for (i = 0; i < wordSel.length; i++) {
+var lives = 10;
+
+var wins = 0;
+
+function blankGen () {
+	var answerArray = [];
+	for (i = 0; i < wordSel.length; i++) {
 	answerArray[i] = "_";
-};
-console.log(answerArray)
-// Var to determine end-game
+	};
+	return answerArray;
+}
+answerArray = blankGen();
+console.log(answerArray);
+
+
+var guessArray = [];
+
+var lives = 10;
+
+var wins = 0;
+
 var remainingLetters = wordSel.length;
 
-// While loop for game logic
-while (remainingLetters > 0) {
-	// console.log(answerArray.join(" "));
-	document.getElementById('word').innerHTML = answerArray.join(" ");
-	var guess = prompt("Guess a letter, or click Cancel to stop playing.");
-	if (guess === null) {
-		break;
+document.onkeyup = function(event) {
+    var guess = String.fromCharCode(event.keyCode).toLowerCase();
+	console.log(guess);
+
+	if (lives === 0) {
+		// document.getElementById("alert").innerHTML = "Game Over";
+		// pickAWord();
+		// wordSel = pickAWord()
+		// blankGen();
+		// answerArray = blankGen();
+		
 	}
-	else if (guess.length !==1) {
-		alert("Please enter a single letter.");
+
+	else if (guessArray.indexOf(guess) > -1) {
+		// execute if guess is in the guessArray already
+		console.log(guess);
+		document.getElementById("alert").innerHTML = "Letter already guessed!";			
 	}
-	else {
+	else if (wordSel.indexOf(guess) > -1) {
+		// execute if guess is not already in the guessArray
+		guessArray.push(guess);
+		document.getElementById("word").innerHTML = answerArray.join(" ");
+		document.getElementById("guessed").innerHTML = guessArray.join(" ")
+		document.getElementById("alert").innerHTML = " ";
 		for (x = 0; x < wordSel.length; x++) {
-			if (wordSel[x] === guess){
+			if (wordSel[x] === guess) {
 				answerArray[x] = guess;
+				console.log(answerArray);
+				document.getElementById("word").innerHTML = answerArray.join(" ");
 				remainingLetters--;
 			}
 		}
 	}
-}
-alert(answerArray.join(" "));
-alert("Good Job! The answer was " + wordSel);
-}
+
+	else {
+		lives--;
+		console.log(lives);
+		guessArray.push(guess);
+		document.getElementById("guessed").innerHTML = guessArray.join(" ")
+		document.getElementById("alert").innerHTML = " ";
+			if (lives === 0) {
+				document.getElementById("alert").innerHTML = "Game Over";
+				document.getElementById("word").innerHTML = answerArray
+				pickAWord();
+				wordSel = pickAWord()
+				blankGen();
+				answerArray = blankGen();
+			};
+	}
+};
+
+	
