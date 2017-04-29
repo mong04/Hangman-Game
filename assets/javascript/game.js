@@ -8,10 +8,6 @@ var pickAWord = function() {
 wordSel = pickAWord();
 console.log(wordSel);
 
-var lives = 10;
-
-var wins = 0;
-
 function blankGen () {
 	var answerArray = [];
 	for (i = 0; i < wordSel.length; i++) {
@@ -19,67 +15,68 @@ function blankGen () {
 	};
 	return answerArray;
 }
+
+function newGame () {
+	pickAWord();
+	wordSel=pickAWord();
+	blankGen();
+	answerArray=blankGen();
+	lives = 10;
+	remainingLetters = wordSel.length;
+	guessArray = []
+}
+
 answerArray = blankGen();
 console.log(answerArray);
-
-
 var guessArray = [];
-
-var lives = 10;
-
-var wins = 0;
-
 var remainingLetters = wordSel.length;
+var lives = 10;
+var wins = 0;
 
 document.onkeyup = function(event) {
     var guess = String.fromCharCode(event.keyCode).toLowerCase();
 	console.log(guess);
 
-	if (lives === 0) {
-		// document.getElementById("alert").innerHTML = "Game Over";
-		// pickAWord();
-		// wordSel = pickAWord()
-		// blankGen();
-		// answerArray = blankGen();
-		
+	if (guessArray.indexOf(guess) > -1){
+		document.getElementById("alert").innerHTML = "That letter has already been guessed!"
 	}
 
-	else if (guessArray.indexOf(guess) > -1) {
-		// execute if guess is in the guessArray already
-		console.log(guess);
-		document.getElementById("alert").innerHTML = "Letter already guessed!";			
-	}
 	else if (wordSel.indexOf(guess) > -1) {
-		// execute if guess is not already in the guessArray
 		guessArray.push(guess);
-		document.getElementById("word").innerHTML = answerArray.join(" ");
-		document.getElementById("guessed").innerHTML = guessArray.join(" ")
+		console.log(guessArray);
 		document.getElementById("alert").innerHTML = " ";
+		document.getElementById("guessed").innerHTML = guessArray.join (" ");
 		for (x = 0; x < wordSel.length; x++) {
 			if (wordSel[x] === guess) {
 				answerArray[x] = guess;
-				console.log(answerArray);
 				document.getElementById("word").innerHTML = answerArray.join(" ");
 				remainingLetters--;
+				console.log(remainingLetters);
+				if (remainingLetters === 0) {
+					document.getElementById("alert").innerHTML = "You Win!";
+					wins++;
+					document.getElementById("wins").innerHTML = wins;
+					newGame();
+				}
 			}
 		}
 	}
-
-	else {
-		lives--;
-		console.log(lives);
+	else if (wordSel.indexOf(guess) === -1) {
 		guessArray.push(guess);
-		document.getElementById("guessed").innerHTML = guessArray.join(" ")
 		document.getElementById("alert").innerHTML = " ";
-			if (lives === 0) {
-				document.getElementById("alert").innerHTML = "Game Over";
-				document.getElementById("word").innerHTML = answerArray
-				pickAWord();
-				wordSel = pickAWord()
-				blankGen();
-				answerArray = blankGen();
-			};
+		document.getElementById("word").innerHTML = answerArray.join (" ");
+		document.getElementById("guessed").innerHTML = guessArray.join (" ");
+		lives--;
+		document.getElementById("guesses").innerHTML = lives;
+			if(lives === 0) {
+				document.getElementById("alert").innerHTML = "You Lose!";
+				newGame();
+			}
 	}
+
+
+
+
 };
 
 	

@@ -47,7 +47,7 @@ for (i = 0; i < wordSel.length; i++) {
 document.addEventListener("keydown", function (e) {
 
 	document.getElementById("word").innerHTML = answerArray.join(" ");
-	
+	document.getElementById("guesses").innerHTML = lives;
 	console.log(wordSel);
 	var guess = keyCodes[e.keyCode];
 	// console.log(guess);
@@ -77,7 +77,7 @@ document.addEventListener("keydown", function (e) {
 		}
 	}
 
-	else if (guessArray.indexOf(guess) !== -1) {
+	else if (guessArray.indexOf(guess) === -1) {
 		lives--;
 		console.log(lives);
 		guessArray.push(guess);
@@ -85,13 +85,13 @@ document.addEventListener("keydown", function (e) {
 		document.getElementById("alert").innerHTML = " ";
 	}
 
-	else {
-		lives--;
-		console.log(lives);
-		guessArray.push(guess);
-		document.getElementById("guessed").innerHTML = guessArray.join(" ")
-		document.getElementById("alert").innerHTML = " ";
-	}
+	// else {
+	// 	lives--;
+	// 	console.log(lives);
+	// 	guessArray.push(guess);
+	// 	document.getElementById("guessed").innerHTML = guessArray.join(" ")
+	// 	document.getElementById("alert").innerHTML = " ";
+	// }
 		
 
 });
